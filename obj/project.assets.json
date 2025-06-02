@@ -866,7 +866,7 @@
           }
         }
       },
-      "Microsoft.IdentityModel.Abstractions/8.10.0": {
+      "Microsoft.IdentityModel.Abstractions/8.11.0": {
         "type": "package",
         "compile": {
           "lib/net9.0/Microsoft.IdentityModel.Abstractions.dll": {
@@ -879,10 +879,10 @@
           }
         }
       },
-      "Microsoft.IdentityModel.JsonWebTokens/8.10.0": {
+      "Microsoft.IdentityModel.JsonWebTokens/8.11.0": {
         "type": "package",
         "dependencies": {
-          "Microsoft.IdentityModel.Tokens": "8.10.0"
+          "Microsoft.IdentityModel.Tokens": "8.11.0"
         },
         "compile": {
           "lib/net9.0/Microsoft.IdentityModel.JsonWebTokens.dll": {
@@ -895,10 +895,10 @@
           }
         }
       },
-      "Microsoft.IdentityModel.Logging/8.10.0": {
+      "Microsoft.IdentityModel.Logging/8.11.0": {
         "type": "package",
         "dependencies": {
-          "Microsoft.IdentityModel.Abstractions": "8.10.0"
+          "Microsoft.IdentityModel.Abstractions": "8.11.0"
         },
         "compile": {
           "lib/net9.0/Microsoft.IdentityModel.Logging.dll": {
@@ -944,11 +944,11 @@
           }
         }
       },
-      "Microsoft.IdentityModel.Tokens/8.10.0": {
+      "Microsoft.IdentityModel.Tokens/8.11.0": {
         "type": "package",
         "dependencies": {
           "Microsoft.Extensions.Logging.Abstractions": "8.0.0",
-          "Microsoft.IdentityModel.Logging": "8.10.0"
+          "Microsoft.IdentityModel.Logging": "8.11.0"
         },
         "compile": {
           "lib/net9.0/Microsoft.IdentityModel.Tokens.dll": {
@@ -1333,11 +1333,11 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
-      "System.IdentityModel.Tokens.Jwt/8.10.0": {
+      "System.IdentityModel.Tokens.Jwt/8.11.0": {
         "type": "package",
         "dependencies": {
-          "Microsoft.IdentityModel.JsonWebTokens": "8.10.0",
-          "Microsoft.IdentityModel.Tokens": "8.10.0"
+          "Microsoft.IdentityModel.JsonWebTokens": "8.11.0",
+          "Microsoft.IdentityModel.Tokens": "8.11.0"
         },
         "compile": {
           "lib/net9.0/System.IdentityModel.Tokens.Jwt.dll": {
@@ -3594,10 +3594,10 @@
         "microsoft.identity.client.extensions.msal.nuspec"
       ]
     },
-    "Microsoft.IdentityModel.Abstractions/8.10.0": {
-      "sha512": "JxKG5YRBB3b6kSGFec7sbIOngEzPxu4EKPBEIdj/l0ufS1Qhc4wLxAPGJYGhEYOomTbDWaA+ZKVEaJNU+2iWUQ==",
+    "Microsoft.IdentityModel.Abstractions/8.11.0": {
+      "sha512": "X92UuBmvHYtsVrD+R+senFn6wOtSVtliSZNTZI8oHD+WqhYLmLNlHH6avYcbXqEznozxshSYzD/DVAuz54jjtg==",
       "type": "package",
-      "path": "microsoft.identitymodel.abstractions/8.10.0",
+      "path": "microsoft.identitymodel.abstractions/8.11.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -3614,14 +3614,14 @@
         "lib/net9.0/Microsoft.IdentityModel.Abstractions.xml",
         "lib/netstandard2.0/Microsoft.IdentityModel.Abstractions.dll",
         "lib/netstandard2.0/Microsoft.IdentityModel.Abstractions.xml",
-        "microsoft.identitymodel.abstractions.8.10.0.nupkg.sha512",
+        "microsoft.identitymodel.abstractions.8.11.0.nupkg.sha512",
         "microsoft.identitymodel.abstractions.nuspec"
       ]
     },
-    "Microsoft.IdentityModel.JsonWebTokens/8.10.0": {
-      "sha512": "6YcL0exWuiHBUmQIkcocQ0x0mvvNewKbmpJpsZw4uzbweotSmAmb0pOK3CdIDYq31atjxrVOvlfF51+0FmrI5g==",
+    "Microsoft.IdentityModel.JsonWebTokens/8.11.0": {
+      "sha512": "rLvApg2vqs/Kz5kVHwHUMAe3owInYrsPX8QP8CQktubX9R63P+J47nR/IOS4n6ddJCvGInUGRBKqcBGJtuA4Rw==",
       "type": "package",
-      "path": "microsoft.identitymodel.jsonwebtokens/8.10.0",
+      "path": "microsoft.identitymodel.jsonwebtokens/8.11.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -3638,14 +3638,14 @@
         "lib/net9.0/Microsoft.IdentityModel.JsonWebTokens.xml",
         "lib/netstandard2.0/Microsoft.IdentityModel.JsonWebTokens.dll",
         "lib/netstandard2.0/Microsoft.IdentityModel.JsonWebTokens.xml",
-        "microsoft.identitymodel.jsonwebtokens.8.10.0.nupkg.sha512",
+        "microsoft.identitymodel.jsonwebtokens.8.11.0.nupkg.sha512",
         "microsoft.identitymodel.jsonwebtokens.nuspec"
       ]
     },
-    "Microsoft.IdentityModel.Logging/8.10.0": {
-      "sha512": "BnkYC9lKYOL3zk7pmle9VJWAzSTPCjkvLyoKPmr4suFZo2hG3YYnFrffjUgdKHIUlyhcd1eHsBHMkfa1S3o/tA==",
+    "Microsoft.IdentityModel.Logging/8.11.0": {
+      "sha512": "/JNOMdYOQ4Tgbdwu9GbEcRJEpzakizuECCE8dCgY5lKXyqZUdAKXyeq4zITgS81eZYThqjhQZUYaJxOPofbmrg==",
       "type": "package",
-      "path": "microsoft.identitymodel.logging/8.10.0",
+      "path": "microsoft.identitymodel.logging/8.11.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -3662,7 +3662,7 @@
         "lib/net9.0/Microsoft.IdentityModel.Logging.xml",
         "lib/netstandard2.0/Microsoft.IdentityModel.Logging.dll",
         "lib/netstandard2.0/Microsoft.IdentityModel.Logging.xml",
-        "microsoft.identitymodel.logging.8.10.0.nupkg.sha512",
+        "microsoft.identitymodel.logging.8.11.0.nupkg.sha512",
         "microsoft.identitymodel.logging.nuspec"
       ]
     },
@@ -3712,10 +3712,10 @@
         "microsoft.identitymodel.protocols.openidconnect.nuspec"
       ]
     },
-    "Microsoft.IdentityModel.Tokens/8.10.0": {
-      "sha512": "lKS/JCsPnw422g0uk4+iOIJA2Uvq3v6QydDEiOdCFGN1ge/lSeSb8ruZLGLOBMPdN4snSGGn21p92VDuHt4pew==",
+    "Microsoft.IdentityModel.Tokens/8.11.0": {
+      "sha512": "E0iKSD9vv9X+tbHGriMTLkSNK/OOjxOPuf1dt9q32d25Ig+OZaidUqDoUTSS3mWTvPw+x5oXrCTHtDatbzRzTQ==",
       "type": "package",
-      "path": "microsoft.identitymodel.tokens/8.10.0",
+      "path": "microsoft.identitymodel.tokens/8.11.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -3732,7 +3732,7 @@
         "lib/net9.0/Microsoft.IdentityModel.Tokens.xml",
         "lib/netstandard2.0/Microsoft.IdentityModel.Tokens.dll",
         "lib/netstandard2.0/Microsoft.IdentityModel.Tokens.xml",
-        "microsoft.identitymodel.tokens.8.10.0.nupkg.sha512",
+        "microsoft.identitymodel.tokens.8.11.0.nupkg.sha512",
         "microsoft.identitymodel.tokens.nuspec"
       ]
     },
@@ -4235,10 +4235,10 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "System.IdentityModel.Tokens.Jwt/8.10.0": {
-      "sha512": "UYIcKbMifWTg1CdljV3YSr7X4MKGSjUwLMKNLuSNKOsF65NvDPez0917YSDOr3tXF1GTZKCkfbZwYyPsW2owsQ==",
+    "System.IdentityModel.Tokens.Jwt/8.11.0": {
+      "sha512": "fDPoJMD4/puOlYaOESFCZNKy8X5Cw7URr9ibcHe0Qq3SrGhku9xVSxeXSNAP9RRahFQ/GbLfqO9AN1XD3Nxacw==",
       "type": "package",
-      "path": "system.identitymodel.tokens.jwt/8.10.0",
+      "path": "system.identitymodel.tokens.jwt/8.11.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -4255,7 +4255,7 @@
         "lib/net9.0/System.IdentityModel.Tokens.Jwt.xml",
         "lib/netstandard2.0/System.IdentityModel.Tokens.Jwt.dll",
         "lib/netstandard2.0/System.IdentityModel.Tokens.Jwt.xml",
-        "system.identitymodel.tokens.jwt.8.10.0.nupkg.sha512",
+        "system.identitymodel.tokens.jwt.8.11.0.nupkg.sha512",
         "system.identitymodel.tokens.jwt.nuspec"
       ]
     },
@@ -4928,8 +4928,9 @@
       "Microsoft.EntityFrameworkCore >= 9.0.5",
       "Microsoft.EntityFrameworkCore.SqlServer >= 9.0.5",
       "Microsoft.EntityFrameworkCore.Tools >= 9.0.5",
+      "Microsoft.IdentityModel.Tokens >= 8.11.0",
       "Swashbuckle.AspNetCore >= 8.1.1",
-      "System.IdentityModel.Tokens.Jwt >= 8.10.0"
+      "System.IdentityModel.Tokens.Jwt >= 8.11.0"
     ]
   },
   "packageFolders": {
@@ -5008,13 +5009,17 @@
             "target": "Package",
             "version": "[9.0.5, )"
           },
+          "Microsoft.IdentityModel.Tokens": {
+            "target": "Package",
+            "version": "[8.11.0, )"
+          },
           "Swashbuckle.AspNetCore": {
             "target": "Package",
             "version": "[8.1.1, )"
           },
           "System.IdentityModel.Tokens.Jwt": {
             "target": "Package",
-            "version": "[8.10.0, )"
+            "version": "[8.11.0, )"
           }
         },
         "imports": [

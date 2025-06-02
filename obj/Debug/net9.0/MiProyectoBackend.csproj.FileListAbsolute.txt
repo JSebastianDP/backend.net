@@ -161,3 +161,4 @@ C:\Users\Sebastian Diaz\Desktop\MiProyectoBackend\bin\Debug\net9.0\runtimes\win\
 C:\Users\Sebastian Diaz\Desktop\MiProyectoBackend\bin\Debug\net9.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
 C:\Users\Sebastian Diaz\Desktop\MiProyectoBackend\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\Sebastian Diaz\Desktop\MiProyectoBackend\bin\Debug\net9.0\BCrypt.Net-Next.dll
+C:\Users\Sebastian Diaz\Desktop\MiProyectoBackend\obj\Debug\net9.0\MiProyectoBackend.sourcelink.json

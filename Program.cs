@@ -13,6 +13,19 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+// ⭐ AGREGAR CONFIGURACIÓN CORS COMPLETA
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowVueApp", policy =>
+    {
+        policy.WithOrigins("http://localhost:8080")  // Puerto del frontend Vue
+              .AllowAnyHeader()
+              .AllowAnyMethod()
+              .AllowCredentials()
+              .SetPreflightMaxAge(TimeSpan.FromSeconds(3600)); // Cache preflight por 1 hora
+    });
+});
+
 // Configurar autenticación JWT
 var jwtSettings = builder.Configuration.GetSection("Jwt");
 var key = Encoding.ASCII.GetBytes(jwtSettings["Key"]);
@@ -37,9 +50,10 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
-// Registrar servicios (ejemplo: JwtService, PersonaService)
+// Registrar servicios
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IPersonaService, PersonaService>();
+builder.Services.AddScoped<IRolService, RolService>();
 
 // Habilitar controladores
 builder.Services.AddControllers();
@@ -54,7 +68,26 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+// ⭐ MIDDLEWARE MANUAL PARA OPTIONS (manejo explícito de preflight)
+app.Use(async (context, next) =>
+{
+    if (context.Request.Method == "OPTIONS")
+    {
+        context.Response.Headers.Add("Access-Control-Allow-Origin", "http://localhost:8080");
+        context.Response.Headers.Add("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+        context.Response.Headers.Add("Access-Control-Allow-Headers", "Content-Type, Authorization");
+        context.Response.Headers.Add("Access-Control-Allow-Credentials", "true");
+        context.Response.StatusCode = 200;
+        return;
+    }
+    await next();
+});
+
+// ⭐ CORS DEBE IR ANTES DE HTTPS Y AUTHENTICATION
+app.UseCors("AllowVueApp");
+
+// ⭐ COMENTAR TEMPORALMENTE HTTPS REDIRECT PARA DEBUGGING
+// app.UseHttpsRedirection();
 
 // Importante: Habilitar autenticación y autorización en este orden
 app.UseAuthentication();

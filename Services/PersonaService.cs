@@ -1,12 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 using MiProyectoBackend.Data;
 using MiProyectoBackend.Interfaces;
 using MiProyectoBackend.Models;
-using Microsoft.EntityFrameworkCore;
-using System.Security.Cryptography;
-using System.Text;
+using MiProyectoBackend.Helpers;
 
 namespace MiProyectoBackend.Services
 {
@@ -21,20 +20,35 @@ namespace MiProyectoBackend.Services
 
         public Persona GetById(Guid id)
         {
-            return _context.Persona.Find(id);
+            return _context.Persona
+                .Include(p => p.Rol)
+                .SingleOrDefault(p => p.Id == id);
         }
 
         public IEnumerable<Persona> GetAll()
         {
-            return _context.Persona.ToList();
+            return _context.Persona
+                .Include(p => p.Rol)
+                .ToList();
         }
 
         public Persona Create(Persona persona, string password)
         {
-            if (_context.Persona.Any(x => x.Email == persona.Email))
-                throw new Exception("Email already exists");
+            if (persona == null)
+                throw new ArgumentNullException(nameof(persona));
 
-            persona.PasswordHash = HashPassword(password);
+            if (string.IsNullOrEmpty(password))
+                throw new ArgumentException("La contraseña es requerida", nameof(password));
+
+            if (_context.Persona.Any(x => x.Email == persona.Email))
+                throw new InvalidOperationException("El email ya existe");
+
+            // Validar que el RolId existe en la tabla Rol
+            if (!_context.Rol.Any(r => r.Id == persona.RolId))
+                throw new InvalidOperationException("El RolId no es válido");
+
+            // Usa PasswordHelper para hashear
+            persona.PasswordHash = PasswordHelper.HashPassword(password);
 
             _context.Persona.Add(persona);
             _context.SaveChanges();
@@ -45,16 +59,24 @@ namespace MiProyectoBackend.Services
         public void Update(Guid id, Persona personaParam, string password = null)
         {
             var persona = _context.Persona.Find(id);
-            if (persona == null) throw new Exception("Persona no encontrada");
+            if (persona == null)
+                throw new KeyNotFoundException("Persona no encontrada");
+
+            if (_context.Persona.Any(x => x.Email == personaParam.Email && x.Id != id))
+                throw new InvalidOperationException("El email ya está en uso por otra persona");
+
+            // Validar que el RolId es válido antes de actualizar
+            if (!_context.Rol.Any(r => r.Id == personaParam.RolId))
+                throw new InvalidOperationException("El RolId no es válido");
 
             persona.Nombre = personaParam.Nombre;
             persona.Apellido = personaParam.Apellido;
             persona.Email = personaParam.Email;
-            persona.Rol = personaParam.Rol;
+            persona.RolId = personaParam.RolId; // Cambiado para usar RolId
 
             if (!string.IsNullOrEmpty(password))
             {
-                persona.PasswordHash = HashPassword(password);
+                persona.PasswordHash = PasswordHelper.HashPassword(password);
             }
 
             _context.Persona.Update(persona);
@@ -73,29 +95,20 @@ namespace MiProyectoBackend.Services
 
         public Persona ValidateUser(string email, string password)
         {
-            var persona = _context.Persona.SingleOrDefault(x => x.Email == email);
+            if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
+                return null;
 
-            if (persona == null) return null;
+            var persona = _context.Persona
+                .Include(p => p.Rol)
+                .SingleOrDefault(x => x.Email == email);
 
-            if (VerifyPassword(password, persona.PasswordHash))
+            if (persona == null)
+                return null;
+
+            if (PasswordHelper.VerifyPassword(password, persona.PasswordHash))
                 return persona;
 
             return null;
-        }
-
-        // Hashing password simple (puedes usar librerías como BCrypt)
-        private string HashPassword(string password)
-        {
-            using var sha256 = SHA256.Create();
-            var bytes = Encoding.UTF8.GetBytes(password);
-            var hash = sha256.ComputeHash(bytes);
-            return Convert.ToBase64String(hash);
-        }
-
-        private bool VerifyPassword(string password, string storedHash)
-        {
-            var hashOfInput = HashPassword(password);
-            return hashOfInput == storedHash;
         }
     }
 }

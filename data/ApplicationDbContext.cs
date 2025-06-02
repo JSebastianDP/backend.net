@@ -12,5 +12,6 @@ namespace MiProyectoBackend.Data
 
         // Aquí defines tus tablas como DbSet:
         public DbSet<Persona> Persona  { get; set; }
+        public DbSet<Rol> Rol  { get; set; }
     }
 }

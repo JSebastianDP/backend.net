@@ -19,6 +19,9 @@ namespace MiProyectoBackend.Models
 
         public string PasswordHash { get; set; }
 
-        public string Rol { get; set; }
+        public Guid RolId { get; set; }  // Foreign Key
+        public Rol Rol { get; set; }     // Navigation property
+
+
     }
 }
